@@ -1,0 +1,2 @@
+- add pagination
+https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Pagination
