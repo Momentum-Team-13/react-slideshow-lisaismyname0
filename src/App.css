@@ -1,5 +1,14 @@
 #screen{
     border: 1px solid black;
-    width: 750px;
-    height: 500px;
+    width: 1000px;
+}
+
+img{
+    width: 300px;
+    height: auto;
+}
+
+#slide{
+    display:flex;
+    flex-direction: row;
 }

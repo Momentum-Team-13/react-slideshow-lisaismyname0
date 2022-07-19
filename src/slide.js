@@ -1,31 +1,17 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-export default function Slide(){
-    const [data, setData]=useState([]);
-    const getData=()=>{
-        fetch("https://ghibliapi.herokuapp.com/films/"
-        ,{
-            headers : {
-                'Content-Type':'application/json',
-                'Accept': 'application/json'
-            }
-        }
-        )
-        .then(function(response){
-            console.log(response)
-            return response.json();
-        })
-        .then(function(myJson){
-            console.log(myJson);
-            setData(myJson)
-        });
-    }
-    
-    useEffect(() =>{
-        getData()
-    },[])
+export default function Slide({film}){
     return(
-      <div id="screen">
-  {data.map((film, index) => <p key ={index}>{index} {film.title}</p>)}
-      </div>)
-  }
+    <div id ="slide">
+    <div id= 'photo'>
+    <img src={film.image} alt="Movie Poster"/>
+    </div>
+    <div id="text_info">
+    <h1>
+    {film.original_title} -
+    ({film.title})</h1>
+    <h2> Released in {film.release_date} </h2>
+    <p>{film.description}</p>
+    </div>
+    </div>)
+}
