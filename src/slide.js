@@ -1,6 +1,6 @@
 // import { useEffect, useState } from "react";
 
-export default function Slide({film, index}){
+export default function Slide({film,}){
     return(
     <div id ="slide">
     <div id= 'photo'>

@@ -1,34 +1,62 @@
 import Slide from './slide'
 import { useEffect, useState } from "react";
 
-export default function SlideShow(props){
-    const {films} = props
-
+export default function SlideShow(films){
+    const [start, setStart] = useState(true)
     const [currentFilm, setCurrentFilm] = useState(films[0])
-    const [currentFilmIndex, setCurrentFilmIndex]=useState(0);
-    
+    const [data, setData]=useState([]);
+    const [currentFilmIndex, setCurrentFilmIndex] = useState(0)
+    const getData=()=>{
+        fetch("https://ghibliapi.herokuapp.com/films/"
+        ,{
+            headers : {
+                'Content-Type':'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        )
+        .then(function(response){
+            // console.log(response)
+            return response.json();
+        })
+        .then(function(myJson){
+            setData(myJson)
+        });
+    }
+
     useEffect(() =>{
+        getData()},[])
+
+    useEffect(() => {
         setCurrentFilm(films[currentFilmIndex])
     },[films, currentFilmIndex])
 
-    const handleClick = (event) => {
-        console.log(event.target)
-        }
+    const startPresentation = () => {
+        let film1 = data[0]
+        console.log("Lets Begin", film1)
+        setStart(film1)
+        console.log(currentFilm)
+        return(
+            <Slide film={film1}/>
+        )
+    }
+    return(<div>
+        <h1>Ghibli React Project</h1>
+        <div id='screen'>
+        {start ? 
+    (<div>
+    <h2>Click The Button to begin the Presentation</h2>
+        <button onClick={() => startPresentation()}> Start Presentation Function</button></div>): (
+        data.map((film, index) => (
+          <Slide film ={data} key ={index}/> ))
 
-    return (
-        <>
-            <p> <Slide film={currentFilm}/></p>
-    <div>{currentFilmIndex}
-    <button onClick= {(e) => handleClick(e)}>Go Back</button>
-    <button onClick= {(e) => handleClick(e)}> Next </button>
-    <button onClick={setCurrentFilmIndex(0)}> Start Over</button>
-    <button onClick= {(e) => handleClick(e)}> Jump to Slide *INPUT BOX*</button>
-    </div>
-        </>
-    )}
+        )}
+        {currentFilm ? (<Slide film={currentFilm} key={currentFilm.key}/>) : ("")}
 
+        {!data ? <Slide films={data}/> :<p> Loading...</p>}
 
-
+    </div></div>)
+}
 //     const startPresentation = (film, index) => {
 //         console.log("Lets Begin", film)
 //         setStart()
