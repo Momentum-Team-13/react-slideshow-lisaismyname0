@@ -35,6 +35,7 @@ export default function SlideShow(films){
         let film1 = data[0]
         console.log("Lets Begin", film1)
         setStart(film1)
+        setCurrentFilm(film1)
         console.log(currentFilm)
         return(
             <Slide film={film1}/>
