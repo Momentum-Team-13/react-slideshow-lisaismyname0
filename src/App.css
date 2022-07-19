@@ -1,6 +1,13 @@
 #screen{
     border: 1px solid black;
     width: 1000px;
+    height: auto;
+}
+
+#screenStart{
+    border: 1px solid black;
+    width: 1000px;
+    height: 750px;
 }
 
 img{
