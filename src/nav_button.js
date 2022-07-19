@@ -1,6 +1,6 @@
 const handleClick = (event) => {
     console.log(event.target)
-}
+    }
 
 export default function NavButton(){
     return (

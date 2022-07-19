@@ -1,6 +1,4 @@
-// import { useEffect, useState } from "react";
-
-export default function Slide({film, index}){
+export default function StartSlide({film, index}){
     return(
     <div id ="slide">
     <div id= 'photo'>
