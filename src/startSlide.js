@@ -1,4 +1,5 @@
-export default function StartSlide({film,}){
+
+export default function Slide({film,}){
     return(
     <div id ="slide">
     <div id= 'photo'>
