@@ -30,7 +30,7 @@ function App() {
   return(
     <div className="App">
       <h1>Studio Ghibli Slideshow</h1>
-
+{data.map((film) => <p>{film.title}</p>)}
       <SlideShow/>
       <NavButton/>
     </div>)

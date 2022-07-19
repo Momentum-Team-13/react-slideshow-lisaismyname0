@@ -1,3 +1,4 @@
+
 export default function Slide(){
     return(
         <div id= 'screen'>
