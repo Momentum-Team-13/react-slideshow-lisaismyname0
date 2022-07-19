@@ -1,4 +1,5 @@
 import Slide from './slide'
+import StartSlide from './startSlide'
 import { useEffect, useState } from "react";
 
 export default function SlideShow(films){
@@ -36,14 +37,27 @@ export default function SlideShow(films){
         console.log("Lets Begin", film1)
         setStart(film1)
         setCurrentFilm(film1)
+        setCurrentFilmIndex(0)
         console.log(currentFilm)
         return(
-            <Slide film={film1}/>
+            currentFilmIndex,
+            <StartSlide film={film1}/>
+        )
+    }
+
+    const nextSlide = () => {
+        let films = data
+        let nextFilmIndex = currentFilmIndex + 1
+        console.log(films[nextFilmIndex])
+        let next = films[nextFilmIndex]
+        return (
+            next
         )
     }
 
 
-const handleClick = (event) => { console.log(event.target)
+const handleClick = (event) =>{ 
+    console.log(event.target)
     }
 
     return(<div>
@@ -59,7 +73,7 @@ const handleClick = (event) => { console.log(event.target)
 
 
 <button onClick= {(e) => handleClick(e)}>Go Back</button>
-<button onClick= {(e) => handleClick(e)}> Next </button>
+<button onClick= {(e) => nextSlide()}> Next </button>
 <button onClick= {(e) => startPresentation(e)}> Start Over</button>
 <button onClick= {(e) => handleClick(e)}> Jump to Slide *INPUT BOX*</button>
 
