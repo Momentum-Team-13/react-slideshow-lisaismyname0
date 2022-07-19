@@ -2,6 +2,10 @@ const handleClick = (event) => {
     console.log(event.target)
     }
 
+const handleGoBack = () => {
+    
+}
+
 export default function NavButton(){
     return (
         <div>
